@@ -1,0 +1,15 @@
+tables:
+  auth_user:
+    columns:
+      password: empty
+      last_name:
+        type: fake_update
+        fake_type: last_name
+      first_name:
+        type: fake_update
+        fake_type: first_name
+      username: user_name
+      email:
+        type: fake_update
+        fake_type: company_email
+        where: username != 'admin'

@@ -1,0 +1,26 @@
+version: '3.4'
+
+services:
+  anonymizer:
+    build:
+      context: .
+    depends_on:
+      - db-mysql
+      - db-postgres
+    volumes:
+      - ./:/opt/
+    env_file:
+      - local.env
+
+
+  db-mysql:
+    image: mysql:5.7.30
+    command: ['mysqld', '--character-set-server=utf8mb4', '--collation-server=utf8mb4_unicode_ci', '--port=3306']
+    env_file:
+      - local.env
+
+
+  db-postgres:
+    image: postgres:11.1
+    env_file:
+      - local.env
